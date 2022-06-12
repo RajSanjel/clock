@@ -1,0 +1,44 @@
+@font-face {
+    font-family: 'Number';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Digital Numbers Regular'), url('../DigitalNumbers-Regular.woff') format('woff');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#main {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(88, 85, 85);
+    display: grid;
+    place-items: center;
+}
+
+.clock {
+    height: 200px;
+    width: 500px;
+    background-color: white;
+    display: grid;
+    font-size: 50px;
+    place-items: center;
+    text-align: center;
+    justify-content: center;
+    grid-auto-flow: column;
+}
+
+.hour,
+.sec,
+.min,.ap {
+    font-family:'Number';
+}
+
+.ap {
+    margin-left: 10px;
+}
+
+
+
