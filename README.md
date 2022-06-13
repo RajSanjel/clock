@@ -1,6 +1,6 @@
 # Clock
-This is a clock made using js. It shows time only for now. 
+This is a clock made using js. JsClock! 
 ----
-# Features
-Alarm Feature.
-More on way!
+## Features
+- Set Alarm.
+- More will be added on suggestion.
