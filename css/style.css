@@ -20,7 +20,7 @@
 }
 
 .display {
-    height: 250px;
+    height: 280px;
     width: 500px;
     background-color: white;
     display: grid;
@@ -31,7 +31,8 @@
 
 .date,
 .clock,
-.activeAlarm,.Alarm {
+.activeAlarm,
+.Alarm {
     display: grid;
     grid-auto-flow: column;
 
@@ -102,4 +103,10 @@
     stroke: black;
     border: none;
     color: white;
+}
+
+
+.error{
+    color: red;
+    font-size: 25px;
 }

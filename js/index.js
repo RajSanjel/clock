@@ -1,17 +1,3 @@
-const months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
 const weekday = [
   "Sunday",
   "Monday",
@@ -21,7 +7,6 @@ const weekday = [
   "Friday",
   "Saturday",
 ];
-const toggleMonth = false;
 const ringtone1 = new Audio("../ring/ringtone1.mp3");
 let ringtone = true;
 const stopBtn = document.querySelector(".stop");
@@ -37,11 +22,18 @@ submitBtn.addEventListener("click", () => {
     ampm = "PM";
   }
   ringtone = true;
-  console.log(alarmHour, alarmMin);
-  localStorage.setItem("alarmHour", alarmHour);
-  localStorage.setItem("alarmMin", alarmMin);
-  localStorage.setItem("alarmAmPm", ampm);
-  showActive = true;
+  if (alarmHour === undefined || alarmMin === undefined) {
+document.querySelector('.error').classList.remove('nodisp');
+document.querySelector('.error').innerHTML= "Invalid Time";
+
+} else {
+    document.querySelector('.error').classList.add('nodisp');
+    localStorage.setItem("alarmHour", alarmHour);
+    localStorage.setItem("alarmMin", alarmMin);
+    localStorage.setItem("alarmAmPm", ampm);
+    showActive = true;
+    document.querySelector("#setAlarm").value = '00:00';
+  }
 });
 
 
@@ -83,9 +75,9 @@ function displayDateAndTime() {
   let year = date.getFullYear();
 
   document.querySelector(".year").innerHTML = year + "/";
-  if (toggleMonth === false) {
-    document.querySelector(".month").innerHTML = month + "/";
-  }
+
+  document.querySelector(".month").innerHTML = month + "/";
+
   document.querySelector(".cdate").innerHTML = currentDate;
 
   document.querySelector(".day").innerHTML = weekday[day];
@@ -96,6 +88,11 @@ function displayDateAndTime() {
   ];
   if (alarm[0] !== null) {
     alarmHour = alarm[0] % 12;
+    if (alarmHour === 0 ){
+      alarmHour= 12;
+    }
+
+    alarmMin = alarm[1];
     if (min < 10) {
       alarmMin = "0" + alarm[1] + alarmMin;
     } else {
@@ -138,14 +135,17 @@ function displayDateAndTime() {
     document.querySelector(".reset").classList.add('nodisp')
     document.querySelector(".activeAlarm").innerHTML = '';
   } else {
-    const showHour = localStorage.getItem('alarmHour') % 12;
+    let showHour = localStorage.getItem('alarmHour') % 12;
+    if (showHour === 0 ){
+      showHour= 12;
+    }
     document.querySelector(".activeAlarm").innerHTML = `
       <p class="alarmHour">${showHour}:</p>
                   <p class="alarmMin">${localStorage.getItem('alarmMin')}:</p>
                   <p class="alarmAmPm">${localStorage.getItem('alarmAmPm')}</p>
                   
       `;
-      document.querySelector(".reset").classList.remove('nodisp')
+    document.querySelector(".reset").classList.remove('nodisp')
   }
 
   document.querySelector(".reset").addEventListener("click", () => {
@@ -160,4 +160,4 @@ function displayDateAndTime() {
 
 }
 
-setInterval(displayDateAndTime, 1);
+setInterval(displayDateAndTime, 100);
