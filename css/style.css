@@ -16,29 +16,89 @@
     background-color: rgb(88, 85, 85);
     display: grid;
     place-items: center;
+    grid-auto-flow: row;
 }
 
-.clock {
-    height: 200px;
+.display {
+    height: 250px;
     width: 500px;
     background-color: white;
     display: grid;
-    font-size: 50px;
     place-items: center;
-    text-align: center;
     justify-content: center;
-    grid-auto-flow: column;
+    grid-auto-flow: row;
 }
+
+.date,
+.clock {
+    display: grid;
+    grid-auto-flow: column;
+
+}
+
+.clock {
+    font-size: 50px;
+}
+
+.date {
+    font-size: 30px;
+}
+
 
 .hour,
 .sec,
-.min,.ap {
-    font-family:'Number';
+.min,
+.ap {
+    font-family: 'Number';
 }
 
 .ap {
     margin-left: 10px;
 }
 
+.day {
+    margin-left: 20px;
+}
 
+.stop {
+    padding: 10px;
+    border-style: none;
+    background-color: red;
+    color: white;
+    font-size: 20px;
+    margin-top: -1000px;
+}
 
+.active {
+    display: block;
+}
+
+.nodisp {
+    display: none;
+}
+
+#setAlarm,
+.submit,
+.reset {
+    padding: 10px;
+    font-size: 20px;
+}
+
+.submit {
+    background-color: rgb(73, 73, 234);
+    border: none;
+    color: white;
+}
+
+.submit:hover,
+.reset:hover,
+.stop:hover {
+    opacity: 0.8;
+}
+
+.reset {
+    background-color: red;
+    stroke: black;
+    border: none;
+    color: white;
+}
