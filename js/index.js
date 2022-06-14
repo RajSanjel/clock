@@ -25,7 +25,35 @@ function app() {
 
 }
 
+function snooze() {
+  ringtone1.pause()
+  let storageHour = localStorage.getItem("alarmHour")
+  let storageMin = localStorage.getItem("alarmMin");
+  document.querySelector(".reset").classList.add('nodisp')
+  document.querySelector(".Alarm").classList.add('nodisp')
+  let snoozeTime = storageMin
+  if (snoozeTime = 55) {
+    snoozeTime = (Number(storageMin) + 1) % 60
+  } else {
+    snoozeTime = storageMin
+  }
+  console.log(snoozeTime)
 
+  if (storageMin>54)[
+    storageHour = localStorage.setItem("alarmHour", ((Number(storageHour)) + 1))
+  ]
+  if (snoozeTime < 10) {
+    storageMin = localStorage.setItem("alarmMin", ("0" + snoozeTime))
+    console.log("yo")
+  } else {
+    storageMin = localStorage.setItem("alarmMin", snoozeTime)
+  }
+
+}
+
+snoozeBtn.addEventListener('click', () => {
+  snooze()
+})
 
 function showAlarm() {
   if (localStorage.getItem("alarmHour") === "null") {
@@ -51,7 +79,9 @@ function checkAlarm() {
   let date = new Date();
   let hour = date.getHours() % 12;
   let min = date.getMinutes();
-
+  if (hour === 0) {
+    hour = 12;
+  }
   let alarm = [
     localStorage.getItem("alarmHour"),
     localStorage.getItem("alarmMin"),
@@ -87,13 +117,14 @@ function checkAlarm() {
         localStorage.setItem("alarmMin", null);
         localStorage.setItem("alarmAmPm", null);
         ringtone = true;
+        snooze()
       }
     }
 
-  } else {
-    ringtone = false;
   }
 }
+
+
 
 function stopAlarm() {
   stopBtn.addEventListener("click", () => {
@@ -134,7 +165,6 @@ function addAlarm() {
       document.querySelector(".reset").classList.remove('nodisp')
     }
   });
-
 }
 
 function removeAlarm() {
@@ -191,8 +221,6 @@ function displayDateAndTime() {
 
   document.querySelector(".day").innerHTML = weekday[day];
 }
-
-
 
 addAlarm()
 setInterval(app, 100);
