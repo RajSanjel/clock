@@ -117,7 +117,7 @@ function addAlarm() {
     if (alarmTime[0] < 12) {
       storageAmPm = "AM";
     } else {
-      storageAmpM = "PM";
+      storageAmPm = "PM";
     }
     ringtone = true;
     if (storageHour === undefined || storageMin === undefined) {
