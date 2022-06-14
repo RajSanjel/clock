@@ -8,6 +8,7 @@
 * {
     margin: 0;
     padding: 0;
+    
 }
 
 #main {
@@ -35,6 +36,7 @@
 .Alarm {
     display: grid;
     grid-auto-flow: column;
+    
 
 }
 
@@ -66,7 +68,7 @@
     margin-left: 20px;
 }
 
-.stop {
+.stop, .snooze {
     padding: 10px;
     border-style: none;
     background-color: red;
@@ -109,4 +111,5 @@
 .error{
     color: red;
     font-size: 25px;
+    transition: all 0.5s ease;
 }
