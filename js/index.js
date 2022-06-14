@@ -13,8 +13,7 @@ const ringtone1 = new Audio("../ring/ringtone1.mp3");
 let ringtone = true;
 const stopBtn = document.querySelector(".stop");
 const submitBtn = document.querySelector(".submit");
-const snoozeBtn = document.querySelector(".snooze")
-
+const snoozeBtn = document.querySelector(".snooze");
 
 function app() {
   displayDateAndTime()
@@ -22,8 +21,16 @@ function app() {
   removeAlarm()
   checkAlarm()
   stopAlarm()
-
 }
+
+function init() {
+  if (localStorage.getItem("alarmHour") === null) {
+    localStorage.setItem("alarmHour", null);
+    localStorage.setItem("alarmMin", null);
+    localStorage.setItem("alarmAmPm", null);
+  }
+}
+init()
 
 function snooze() {
   ringtone1.pause()
@@ -39,7 +46,7 @@ function snooze() {
   }
   console.log(snoozeTime)
 
-  if (storageMin>54)[
+  if (storageMin > 54)[
     storageHour = localStorage.setItem("alarmHour", ((Number(storageHour)) + 1))
   ]
   if (snoozeTime < 10) {
@@ -56,8 +63,9 @@ snoozeBtn.addEventListener('click', () => {
 })
 
 function showAlarm() {
-  if (localStorage.getItem("alarmHour") === "null") {
+  if (localStorage.getItem("alarmMin") === "null") {
     document.querySelector(".reset").classList.add('nodisp')
+    document.querySelector(".Alarm").classList.add('nodisp')
     document.querySelector(".activeAlarm").innerHTML = '';
   } else {
     let showHour = localStorage.getItem('alarmHour') % 12;
