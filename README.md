@@ -9,6 +9,6 @@
 - Time updates every second.
 
 ## Screenshots
-- ![Normal Clock](/img/screenshots/clockss.png)
-- ![Clock With Alarm Set](/img/screenshots/alarm.png)
-- ![Clock With Alarm ringing](img/screenshots/alarmring.png)
+ ![Normal Clock](/img/screenshots/clockss.png)
+ ![Clock With Alarm Set](/img/screenshots/alarm.png)
+ ![Clock With Alarm ringing](img/screenshots/alarmring.png)
